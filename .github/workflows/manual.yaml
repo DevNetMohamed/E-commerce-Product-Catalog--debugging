@@ -1,19 +1,10 @@
 on:
-    workflow_dispatch:
-        inputs:
-          environment: 
-            description: "Choose environment"
-            required: true
-            default: "statging"
-            type: choice
-            options:
-              - statging
-              - Devlopment
-              - production
-              
+  repository_dispatch:
+    types: [incident_report]
 jobs:
-  deploy:
+  handle_incident:
     runs-on: ubuntu-latest
     steps:
-      - name: Delpoy Application
-        run: echo "Delpoying Application to ${{inputs.environment}}"
+      - name: Print incident details
+        run: echo "Incident reported"
+  
