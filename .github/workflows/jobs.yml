@@ -8,8 +8,8 @@ jobs:
       - run: |
          npm install
          npm run dev
-        working-directory: ./temp
-        shell: bash
+        # working-directory: ./temp
+        # shell: bash
       
       - run: print %ENV
         shell: perl {0}
