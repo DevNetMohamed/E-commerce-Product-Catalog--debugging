@@ -1,3 +1,4 @@
+name: CI Test Pipeline
 on:
   push:
     branches:
@@ -9,7 +10,6 @@ on:
     branches:
       - master
       - "release/**"
-
 jobs:
   test: 
     runs-on: ubuntu-latest
