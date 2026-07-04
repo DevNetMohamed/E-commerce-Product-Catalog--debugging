@@ -1,4 +1,5 @@
-name: CI Test Pipeline
+name: CI Test Pipeline NodeJs App
+
 on:
   push:
     branches:
