@@ -4,12 +4,14 @@ on:
   push:
     branches:
       - master
+      - Test
       - "release/**"
     paths:
       - "src/**"
   pull_request:
     branches:
       - master
+      - Test
       - "release/**"
 jobs:
   test: 
