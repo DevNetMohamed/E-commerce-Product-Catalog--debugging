@@ -1,18 +1,20 @@
 name: CI Pipeline
 
 on:
-  workflow_dispatch:
+  push:
+    branches: 
+      - master
 
 jobs:
-  test:
+  example-job:
     runs-on: ubuntu-latest
-    steps:
-      - name: Run Test
-        run: echo "test"
 
-  build:
-    needs: test
-    runs-on: ubuntu-latest
     steps:
-      - name: Build Project
-        run: echo "build"
+      - name: Print a welcome message
+        run: echo "Welcome to our first GitHub Action Workflow!"
+
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.0
+
+      - name: list repository directory
+        run: ls -la
