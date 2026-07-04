@@ -1,0 +1,55 @@
+on:
+    workflow_dispatch:
+jobs:
+    actions-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v7.0.0
+            
+            - name: say Hello
+              uses: .github/actions/greeting@v1
+              with: 
+                name: "Mohamed"
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                
+    hyprid_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run Command in Ubuntu VM
+              run: echo "This Run on the Ubuntu VM"
+          
+            - name: Run inside an Alpine Container
+              uses: docker://alpine:latest
+              with:
+                entrypoint: /bin/sh
+                args: |
+                    -c "echo 'This run inside an Alpine Container'"
+
+            - name: Run another command in Ubuntu VM
+              run: echo "Back to Ubuntu VM"
+        
+    dockerize_job:
+        runs-on: ubuntu-latest
+        container: 
+            image: node:latest
+        steps:
+          - run: node --version
+          - run: echo "This whole job runs inside a Node.Js Container"
+
+    strategy_job:
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+           fail-fast: false
+           max-parallel: 3
+           matrix:
+            os: [ubuntu-latest, windows-latest, macos-latest]
+            node_version: [20.x, 21.x, 22.x]
+        steps:
+          - uses: actions/setup-node@v4
+            with:
+              node_version: ${{ matrix.node_version}}
+              
+          
