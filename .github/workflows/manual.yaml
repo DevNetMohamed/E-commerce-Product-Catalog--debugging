@@ -1,7 +1,7 @@
 on:
     workflow_dispatch:
         inputs:
-          enviroment: 
+          environment: 
             description: "Choose environment"
             required: true
             default: "statging"
@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delpoy Application
-        run: echo "Delpoying Application to ${{inputs.enviroment}}"
+        run: echo "Delpoying Application to ${{inputs.environment}}"
