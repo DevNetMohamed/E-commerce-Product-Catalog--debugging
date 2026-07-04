@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delpoy Application
-        run: echo "Delpoying Application"
+        run: echo "Delpoying Application to ${{inputs.enviroment}}"
